@@ -64,46 +64,34 @@ class BOLILLERO(LIST_NUMBER):
 
 
 
-class SORTEO (BOLILLERO,CARTON):
+class SORTEO:
 
     def __init__(self):
 
         self.pozo = 115368971
 
-        self.num_list_sorteo = []
+        self.numero_sorteo = 0
 
 
-    def num_sorteo(self):
+    def n_sorteo(self):
 
-        num=1
+        self.numero_sorteo += 1
 
-        self.num_list_sorteo.append(num)
-
-        return sum(self.num_list_sorteo)
-
-
-    def pozo_sort (self):
-
-      if self.n_sorteo == 1:
-
-         return self.pozo
-
-      else:
-
-         return self.pozo + self.pozo*0.1698*self.n_sorteo
+        return self.numero_sorteo
 
     
-    def result_sorteo(self):
+    def pozo_sort (self):
 
-        self.aciertos = 0
+        if self.numero_sorteo == 1:
 
-        for i in range(len(self.carton)):
+            return self.pozo
 
-            if self.lista_bolillas.count(self.carton[i]) == 1:
+        else:
 
-               self.aciertos += 1
+            return self.pozo + self.pozo*0.1698*self.numero_sorteo
 
-        return self.aciertos
+
+
 
 
 

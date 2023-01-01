@@ -2,16 +2,14 @@ from tkinter import *
 
 from tkinter import ttk
 
-from controller import CONTROLLER
 
+class INTERFAZ:
 
-class INTERFAZ (CONTROLLER):
-
-    def __init__(self):
-
-        super().__init__()
+    def __init__(self, root, controller):
         
-        self.root = Tk()
+        self.root = root
+        
+        self.controller = controller
 
         self.root.config(width=1093, height=659, bg = "DeepSkyBLue2")
 
@@ -19,7 +17,7 @@ class INTERFAZ (CONTROLLER):
 
         self.root.title("Telekino")
 
-        self.icono_root = PhotoImage(file = R"C:\Users\User\Desktop\Python-Domo\TPS\TP4\Logonuevo150.png")
+        self.icono_root = PhotoImage(file = R"C:\Users\User\Desktop\Repos\Proyecttelekino\ProyectTelekino\Logonuevo150.png")
 
         self.root.iconphoto(True, self.icono_root)
 
@@ -29,8 +27,6 @@ class INTERFAZ (CONTROLLER):
 
         self.frame_principal()
 
-        self.root.mainloop()
-
 
     def frame_principal (self):
 
@@ -38,7 +34,7 @@ class INTERFAZ (CONTROLLER):
 
             self.frame.place(x = 20 , y = 20)
 
-            self.icono = PhotoImage(file=R"C:\Users\User\Desktop\Python-Domo\TPS\TP4\telekino_imagen.png")
+            self.icono = PhotoImage(file=R"C:\Users\User\Desktop\Repos\Proyecttelekino\ProyectTelekino\telekino_imagen.png")
 
             self.imagen_telekino = Label(self.frame, image = self.icono, bg = "SkyBlue2")
 
@@ -123,13 +119,13 @@ class INTERFAZ (CONTROLLER):
 
             # Botones de sorteo y carton
 
-            self.Boton_carton = Button(self.frame, width=22, height=1, bg= "white", font= ("Arial", 10), text = "Comprar Cartón", command=self.view_carton )
+            self.Boton_carton = Button(self.frame, width=22, height=1, bg= "white", font= ("Arial", 10), text = "Comprar Cartón", command=self.controller.view_carton )
 
             self.Boton_carton.place(x = 20, y = 580 )
 
 
 
-            self.Boton_sorteo = Button(self.frame, width=22, height=1, bg= "white", font= ("Arial", 10), text = "Sortear", command = self.sorteo )
+            self.Boton_sorteo = Button(self.frame, width=22, height=1, bg= "white", font= ("Arial", 10), text = "Sortear", command = self.controller.result_sorteo )
 
             self.Boton_sorteo.place(x = 222, y = 580 )
 
@@ -193,7 +189,6 @@ class INTERFAZ (CONTROLLER):
             self.numero_sorteo_title.place(x = 650, y = 125)
 
 
-proyecto = INTERFAZ ()
 
 
 
